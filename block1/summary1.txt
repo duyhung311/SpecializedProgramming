@@ -1,0 +1,47 @@
+*******************
+* Group practice *
+*******************
+List the problems you attempted, your scores so far for each
+problem, and which Java API Classes and methods you used to solve
+each problem.
+
+** Problem 1
+Inchworm (100 out of 100)
+Only use simple loop that start from the first rest point on the tree because the first one always count. 
+
+** Problem 2
+MooingCows (100 out of 100)
+ArrayList (size, add, get)
+Math (pow, sqrt)
+
+The problem made me misunderstand the equation ((x-i)2 + (y-j)2).
+I naively thought number 2 was a multiple operator until I ask chat gpt about this equation then i took it as a power operator
+Overall, i chose a linear approach (going through the array to collect to location and calculate the min afterward.
+
+************************
+* Individual practice *
+************************
+
+** Problem 3
+ThrowTheBall (100 out of 100)
+The hardest part of this problems is to find the correct formula to pass either Left or Right to the next person
+I created a array of n+1 (index 0 is left unused due to complex conversion between a person seat (1-based index) and the array (0-based index)) to store how many times a person have take the ball
+Other than that, it it just simple coding logic using if else, while loop with modulo operator
+
+** Problem 4
+PartySeats (100 out of 100)
+String (split)
+ArrayList (add)
+Collections (sort)
+Queue (poll)
+Java Stream API (stream, filter, toArray)
+
+The idea of this problem is fairly simple until i see how much Java library i used to solve the problem
+I struggled to return a empty array as it initially returned of array of null elements
+But since i know Java stream, i finally managed to return what the testcases needed.
+
+** Problem 5
+Reppity (100 out of 100)
+I only used primitive programming function if else and for loop
+I reckon this unable to solve using linear approach (o(n)) but dynamic programming instead. 
+This problems took me a whole day to solve.

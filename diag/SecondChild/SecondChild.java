@@ -3,7 +3,6 @@ package diag.SecondChild;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 public class SecondChild {
     public String chooseName(String father, String mather, String child1, String gender) {
 
@@ -15,29 +14,25 @@ public class SecondChild {
             String[] elements;
             if (gender.equals("Boy")) {
                 elements = father.split(" ");
-                names.add(elements[1]);
-                names.add(elements[0]);
             }
             else  {
                 elements = mather.split(" ");
-                names.add(elements[1]);
-                names.add(elements[0]);
             }
+            names.add(elements[1]);
+            names.add(elements[0]);
         } else { //rule 2
+            String firstName;
+            String secondName = child1.split(" ")[1];
             if (gender.equals("Boy")) {
-                String firstName = father.split(" ")[0];
-                String secondName = child1.split(" ")[1];
-                names.add(firstName);
-                names.add(secondName);
+                firstName = father.split(" ")[0];
             }
             else  {
-                String firstName = mather.split(" ")[0];
-                String secondName = child1.split(" ")[1];
-                names.add(firstName);
-                names.add(secondName);
+                firstName = mather.split(" ")[0];
             }
+            names.add(firstName);
+            names.add(secondName);
         }
-        return names.stream().collect(Collectors.joining(" "));
+        return String.join(" ", names);
     }
 }
 

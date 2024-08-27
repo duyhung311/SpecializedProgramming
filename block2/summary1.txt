@@ -1,0 +1,47 @@
+*******************
+* Group practice *
+*******************
+Problem1
+Monster2Valley2
+I used basic java basic for loops to do recursion
+
+-- Reflection --
+Were the problems attempted in the lab easy/medium/challenging?
+Once my mind change the direction to recursion it got less challenging. initially my mind was fully concentrate
+in iterative
+After this practice, how confident you fill when solving this problem type?
+I feel better on recursion. I know to define a base case and continue with recursion steps
+What else did you learn from the group practice?
+Recursion steps are not always calling the recursion function again with different parameters
+It also includes defining a for loop (I did not see it a thing to do as it would be super expensive)
+************************
+* Individual practice *
+************************
+Problem2
+FibonacciDiv2
+Basic java operations
+I counter the problem in a bottom up manner and stop the recursion steps when
+the given fib number pass the given integer
+Problem3
+EggCartoons
+Basic java operations
+Seems like this problems is harder to solve using recursion so i changed to nested for loops
+with complexity equals to O(n^2)
+Problem4
+QuickSum
+This is when i realize recursion steps are not always calling the recursion function again with
+different parameters. It became for straight-forward to think once my mindset altered toward this way
+Problem5
+ProblemsToSolve
+I could not solve any more recursion so i give up at this problem :(( maybe if i have time more, i would
+do it better
+-- Reflection --
+Explain the rationale behind your choice of individual practice.
+I just chose the problems that my mind could came up with some naive idea in the beginning and build
+up the comnplete solutuion later
+Which area you focused on improving (eg. speed, fluency, algorithmic design,
+coding)?
+Speed and algorithmic design
+What are your goals for the next block of practice?
+Imma try to start earlier next time.
+This time i was stuck with another assignment that blocked me the entire week and kept me starting SP practice

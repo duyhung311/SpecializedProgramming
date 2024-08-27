@@ -1,93 +1,54 @@
-package block2.MonstersValley2;
+//package block2.MonstersValley2;
+public class MonstersValley2 {
 
-import java.util.*;
-
-    public class MonstersValley2 {
-    public int minimumPrice1(int[] dread, int[] price) {
-        int len = dread.length;
-        int lastPrice = price[len - 1];
-        int lastDread = dread[len - 1];
-        int strength = dread[0];
-        int coin = price[0];
-        TreeMap<Integer, Integer> map = new TreeMap<>();
-
-        for (int i = 1; i < len - 1; i++) {
-            int lookForward = dread[i+1];
-            if (lookForward > strength) {
-                Integer lowerPrice = map.lowerKey(price[i]);
-
-                if (lowerPrice != null) {
-                    strength += map.get(lowerPrice);
-                    coin += lowerPrice;
-                } else {
-                    strength += dread[i];
-                    coin += price[i];
-                }
-
-            } else {
-                map.put(price[i], dread[i]);
-            }
-        }
-
-        if (strength < lastDread) {
-            return coin + lastPrice;
-        }
-
-        return coin;
-    }
 
     public int minimumPrice(int[] dread, int[] price) {
-        long strength = dread[0];
-        int coin = price[0];
-        int di = 1;
-        int pi = 1;
-
-        return minimumPriceRecur(dread, price, di, pi, coin, strength);
+        long strength = 0;
+        int coin = 0;
+        int i = 0;
+        if (dread.length == 1) {
+            return price[0];
+        }
+        return minimumPriceRecur(dread, price, i, coin, strength);
     }
 
-    public int minimumPriceRecur(int[] dread, int[] price, int di, int pi, int coinCumulative, long strengthCumulative) {
-        if (di == dread.length || pi == price.length) {
+    public int minimumPriceRecur(int[] dread, int[] price, int i, int coinCumulative, long strengthCumulative) {
+        if (i == dread.length) {
             return coinCumulative;
         }
-//        strengthCumulative += dread[di];
-//        coinCumulative += price[pi];
-        // 8,5, 10
-        // at 5, it doesnt know there are 10 ahead
-        if (strengthCumulative < dread[di] || (di <= dread.length-1  && dread[di + 1] > strengthCumulative + dread[di]) ) {
-            return minimumPriceRecur(dread, price, di + 1, pi + 1, coinCumulative + price[pi], strengthCumulative + dread[di]);
+        if (strengthCumulative < dread[i]) {
+            return minimumPriceRecur(dread, price, i+1, coinCumulative + price[i], strengthCumulative + dread[i]);
         } else {
-            return minimumPriceRecur(dread, price, di + 1, pi + 1, coinCumulative, strengthCumulative);
+            return Math.min(
+                    minimumPriceRecur(dread, price, i+1, coinCumulative, strengthCumulative),
+                    minimumPriceRecur(dread, price, i+1, coinCumulative + price[i], strengthCumulative + dread[i]));
         }
 
     }
 
     public void run() {
 
-        Integer[][] inputs = {{8, 5, 10}, {1, 1, 2},{1, 2, 4, 1000000000}, {1, 1, 1, 2}, {200, 107, 105, 206, 307, 400}, {1, 2, 1, 1, 1, 2},
-                {5216, 12512, 613, 1256, 66, 17202, 30000, 23512, 2125, 33333},
-                {2, 2, 1, 1, 1, 1, 2, 1, 2, 1}};
-        int len = inputs.length;
-        System.out.println(inputs[0]);
-        List<List<Integer>> arr = new ArrayList<>();
-        for (int i = 0; i < len; ) {
-            List<Integer> list = new ArrayList<>();
-            Arrays.asList(inputs[0]);
-
-            i+=2;
-            arr.add(list);
-        }
-
+//        Integer[][] inputs = {{11, 2, 4}, {12, 6, 4}, {20, 3, 7}, {21, 7, 3}, {15, 16, 5}, {1000, 3, 7}, {1000, 7, 3}};
+//        Map<List<Integer>, Integer> testCases = new HashMap<>();
+//        testCases.put(Arrays.asList(inputs[0]), 3);
+//        testCases.put(Arrays.asList(inputs[1]), 2);
+//        testCases.put(Arrays.asList(inputs[2]), 1);
+//        testCases.put(Arrays.asList(inputs[3]), 2);
+//        testCases.put(Arrays.asList(inputs[4]), 1);
+//        testCases.put(Arrays.asList(inputs[5]), 48);
+//        testCases.put(Arrays.asList(inputs[6]), 48);
 //        for (Map.Entry<List<Integer>, Integer> testCase : testCases.entrySet()) {
-
-//        arr.add(Arrays.asList(new Integer[]{8, 5, 10}));
-
-        int res = minimumPrice(new int[]{8,5,10}, new int[]{1, 1, 2});
+        int res = minimumPrice(new int[]{200, 107, 105, 206, 307, 400}, new int[]{1, 2, 1, 1, 1, 2});
             if (!Integer.valueOf(2).equals(res)) {
                 throw new RuntimeException("Error: " + " with res = " + res);
             }
 //        }
-        System.out.println("Testcases all                                                              ");
+        System.out.println("Testcases all passed");
 
     }
 
+    public static void main(String[] args) {
+        MonstersValley2 mv = new MonstersValley2();
+        mv.run();
+    }
 }

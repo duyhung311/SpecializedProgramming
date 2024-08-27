@@ -1,33 +1,27 @@
 package diag.BootsExchange;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BootsExchange {
     public int leastAmount(int[] left, int[] right) {
         Map<Integer, List<Integer>> leftMap = new HashMap<>();
         Map<Integer, List<Integer>> rightMap = new HashMap<>();
-        for (int i =0; i < left.length; i++) {
-            int el = left[i];
-            
-            leftMap.computeIfAbsent(el, k -> new ArrayList<>());
-            leftMap.computeIfPresent(el, (k, v) -> {
-                v.add(el);
-                return v;
-            });
+        int cnt = left.length;
+        for (int i = 0; i < left.length; i++) {
+            int le = left[i];
+            leftMap.computeIfAbsent(le, k -> new ArrayList<>()).add(le);
 
-            int rh = right[i];
-            rightMap.computeIfAbsent(rh, k -> new ArrayList<>());
-            rightMap.computeIfPresent(rh, (k, v) -> {
-                v.add(rh);
-                return v;
-            });
-            
+            int ri = right[i];
+            rightMap.computeIfAbsent(ri, k -> new ArrayList<>()).add(ri);
         }
-        System.out.println(1);
-        return 1
-    ;
+
+         for (Map.Entry<Integer, List<Integer>> entry : leftMap.entrySet()) {
+            int key = entry.getKey();
+            if (rightMap.containsKey(key)) {
+                int mappedPair = Math.min(entry.getValue().size(), rightMap.get(key).size());
+                cnt -= mappedPair;
+            }
+        }
+        return cnt;
     }
 }
