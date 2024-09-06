@@ -1,4 +1,4 @@
-package block3.MagicSpell;
+//package block3.MagicSpell;
 
 public class MagicSpell {
     public String fixTheSpell(String spell) {

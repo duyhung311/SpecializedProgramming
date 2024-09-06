@@ -1,4 +1,4 @@
-package block3.ColorfulRabbits;
+//package block3.ColorfulRabbits;
 
 import java.util.HashMap;
 import java.util.Map;
