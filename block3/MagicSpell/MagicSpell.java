@@ -18,6 +18,7 @@ public class MagicSpell {
                     break;
                 }
             }
+
             if (i < j) {
                 spell = swapCharBetween(i, j, spell);
                 i++;
@@ -41,8 +42,8 @@ public class MagicSpell {
 
     public static void main(String[] args) {
         MagicSpell msp = new MagicSpell();
-        System.out.println("AZBASGHNAZAHBNVZZGGGAGGZAZ");
-        System.out.println(msp.fixTheSpell("AZBASGHNAZAHBNVZZGGGAGGZAZ").equals("ZABZSGHNAZZHBNVAZGGGAGGAZA"));
+        System.out.println("EXXGEYHGCRDPMCOROPFHOQ");
+        System.out.println(msp.fixTheSpell("EXXGEYHGCRDPMCOROPFHOQ"));
 //        System.out.println("ZABZSGHNAZZHBNVAZGGGAGGAZA");
     }
 }
