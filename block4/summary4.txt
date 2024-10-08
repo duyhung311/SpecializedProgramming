@@ -1,0 +1,50 @@
+*******************
+* Group practice *
+*******************
+
+Problem1
+SimpleCompressor
+Stack (pop, push, peek, empty)
+StringBuilder (append, insert, toString)
+List (add)
+
+-- Reflection --
+Were the problems attempted in the lab easy/medium/challenging?
+It gets harder through time
+After this practice, how confident you fill when solving this problem type?
+Not much before an exam
+What else did you learn from the group practice?
+
+************************
+* Individual practice *
+************************
+
+
+Problem2
+ShipBoxes
+List (add)
+Math (max, min)
+
+Problem3
+JumpyNum
+Math (abs)
+I use dp to solve this problem
+
+
+Problem4
+TailuluCoffee
+Arrays (sort)
+Math (max)
+
+Problem5
+VeryInterestingMovie
+String (split, length)
+
+-- Reflection --
+Explain the rationale behind your choice of individual practice.
+I just chose the problems that my mind could came up with some naive idea in the beginning and build up the comnplete solutuion later
+Which area you focused on improving (eg. speed, fluency, algorithmic design,
+coding)?
+Speed and algorithmic design
+What are your goals for the next block of practice?
+Finish the block practice on time
