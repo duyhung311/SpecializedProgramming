@@ -1,32 +1,52 @@
 package block4.CellRemoval;
 
 public class CellRemoval {
+    class Iteration {
+        int leafNode =0;
+        int cnt = 0;
+
+        @Override
+        public String toString() {
+            return "Iteration{" +
+                    "leafNode=" + leafNode +
+                    ", cnt=" + cnt +
+                    '}';
+        }
+    }
     int total;
     int cellsLeft(int[] parent, int deletedCell) {
         total = parent.length;
-        int c = 0;
-         count(c, deletedCell);
+        Iteration i = new Iteration();
+        int c = count(i, deletedCell);
+        System.out.println(c+1);
+        System.out.println(i);
         return total - c  -1;
     }
-    void count(int cnt, int deletedCell) {
+    int count(Iteration i, int deletedCell) {
         if (deletedCell > total) {
-            return;
+//            i.leafNode++;
+            return i.cnt;
         }
 
         int leftChild = getLeftChildFromHeap(deletedCell);
-        count(++cnt, leftChild);
+        if (leftChild < total) {
+            i.cnt++;
+            count(i, leftChild);
+        } else {
+            count(i, leftChild);
+
+        }
 
 
         int rightChild = getRightChildFromHeap(deletedCell);
-        count(++cnt, rightChild);
+        if (rightChild < total) {
+            i.cnt++;
+            return count(i, rightChild);
+        } else {
+            return count(i, rightChild);
 
-//        cnt += (leftChild < total) ? 1 : 0;
-//        cnt += (rightChild < total) ? 1 : 0;
-//        if (leftChild >= total || rightChild >= total) {
-//            return cnt;
-//        } else {
-//            return count(cnt, leftChild) + count(cnt, rightChild);
-//        }
+        }
+
     }
 
     int getLeftChildFromHeap(int parentIndex) {

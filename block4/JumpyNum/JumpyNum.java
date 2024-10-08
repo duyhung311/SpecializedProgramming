@@ -1,16 +1,41 @@
-package block4.JumpyNum;
+//package block4.JumpyNum;
 
 public class JumpyNum {
+    int[][] dp;
     public int howMany(int low, int high) {
-        if (low ==  high) {
-            return 0;
+        howManyOpDp();
+        return howMany(high+1) - howMany(low);
+
+
+    }
+
+    int howMany(int phigh){ // # < phigh
+        String h = Integer.toString(phigh);
+        int ret = 0;
+        for (int i = 1; i < h.length(); i++){
+            for (int d = 1; d < 10; d++){
+                ret += dp[i][d];
+            }
         }
-        int[] dp = new int[high + 1];
-        dp[0] = 0;
-        for (int i = low; i <= high; i++) {
-            howManyDp(i, dp);
+
+        for (int i = 0; i < h.length(); i++){
+            // differ at h[i]
+            int convert1 = Integer.parseInt(h.charAt(i)+"");
+            for (int d = i == 0 ? 1 : 0; d < convert1; d++){
+                if (i > 0) {
+                    int convert2 = Integer.parseInt(h.charAt(i-1)+"");
+                    if (Math.abs(convert2 - d) < 2)
+                        continue;
+                }
+
+//                if(i > 0 && Math.abs(convert2 - d) < 2)
+//                    continue;
+                ret += dp[h.length()-i][d];
+            }
+            if(i > 0 && Math.abs(h.charAt(i)-h.charAt(i-1)) < 2)
+                break;
         }
-        return dp[high];
+        return ret;
     }
 
     private int howManyDpRecursive(int num, int acc, int low, int high) {
@@ -72,9 +97,25 @@ public class JumpyNum {
         }
     }
 
+    private void howManyOpDp() {
+        dp = new int[11][10];
+        for (int d = 0; d < 10; d++){
+            dp[1][d] = 1;
+        }
+        for (int n = 2; n <= 10; n++){
+            // find DP[n]
+            for (int d = 0; d < 10; d++){
+                for (int e = 0; e < 10; e++){
+                    if(Math.abs(d-e) >= 2)
+                        dp[n][d] += dp[n-1][e];
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(new JumpyNum().howMany(2_000_000_000,
-                2_000_000_000));
+        System.out.println(new JumpyNum().howMany(1,
+                10));
     }
 
 }
