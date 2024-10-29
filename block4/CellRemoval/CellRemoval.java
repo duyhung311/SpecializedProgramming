@@ -1,75 +1,48 @@
 package block4.CellRemoval;
 
+import java.util.*;
+
 public class CellRemoval {
-    class Iteration {
-        int leafNode =0;
-        int cnt = 0;
+    public static int cellsLeft(int[] parent, int deletedCell) {
+        Map<Integer, Vector<Integer>> tree = new HashMap<>();
 
-        @Override
-        public String toString() {
-            return "Iteration{" +
-                    "leafNode=" + leafNode +
-                    ", cnt=" + cnt +
-                    '}';
-        }
-    }
-    int total;
-    int cellsLeft(int[] parent, int deletedCell) {
-        total = parent.length;
-        Iteration i = new Iteration();
-        int c = count(i, deletedCell);
-        System.out.println(c+1);
-        System.out.println(i);
-        return total - c  -1;
-    }
-    int count(Iteration i, int deletedCell) {
-        if (deletedCell > total) {
-//            i.leafNode++;
-            return i.cnt;
+        for (int i = 0; i < parent.length; i++) {
+            if (parent[i] == -1) {
+                continue;
+            }
+            if (!tree.containsKey(parent[i])) {
+                tree.put(parent[i], new Vector<Integer>());
+            }
+            tree.get(parent[i]).add(i);
+            if (!tree.containsKey(i)) {
+                tree.put(i, new Vector<Integer>());
+            }
         }
 
-        int leftChild = getLeftChildFromHeap(deletedCell);
-        if (leftChild < total) {
-            i.cnt++;
-            count(i, leftChild);
-        } else {
-            count(i, leftChild);
+        tree = deleteNode(tree, deletedCell);
 
+        int result = 0;
+        for (Vector<Integer> children : tree.values()) {
+            if (children.size() == 0) {
+                result++;
+            }
         }
+        return result;
+    }
 
-
-        int rightChild = getRightChildFromHeap(deletedCell);
-        if (rightChild < total) {
-            i.cnt++;
-            return count(i, rightChild);
-        } else {
-            return count(i, rightChild);
-
+    public static Map<Integer, Vector<Integer>> deleteNode(Map<Integer, Vector<Integer>> tree, int deletedCell) {
+        if (tree.containsKey(deletedCell)) {
+            for(int i = 0; i < tree.get(deletedCell).size(); i++){
+                tree = deleteNode(tree, tree.get(deletedCell).get(i));
+            }
+            tree.remove(deletedCell);
         }
-
+        return tree;
     }
 
-    int getLeftChildFromHeap(int parentIndex) {
-        return (parentIndex * 2) + 1;
-//        int forecastLeftChild = (parentIndex * 2) + 1;
-//        if (forecastLeftChild < total)
-//            return 1;
-//        return 0;
-    }
-    int getRightChildFromHeap(int parentIndex) {
-        return (parentIndex * 2) + 2;
-//        int forecastLeftChild = (parentIndex * 2) + 2;
-//        if (forecastLeftChild < total)
-//            return 1;
-//        return 0;
-    }
-
-    int getParentFromHeap(int childIndex) {
-        return (childIndex - 1) / 2;
-    }
 
     public static void main(String[] args) {
-        int[] parent = {-1,0,0,1,1};
-        System.out.println(new CellRemoval().cellsLeft(parent, 1));
+        int[] parent = {-1,0,0,2,2,4,4,6,6};
+        System.out.println(new CellRemoval().cellsLeft(parent, 4));
     }
 }

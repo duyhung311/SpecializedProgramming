@@ -16,8 +16,6 @@ public class FancyFloor {
                 } else if (!flag && currentLayout.charAt(j) == '-') {
                     flag = true;
                     //j++;
-                } else if ((flag && currentLayout.charAt(j) == '-') || j == currentLayout.length() - 1) {
-                    //j++;
                 }
                 j++;
 
@@ -41,8 +39,6 @@ public class FancyFloor {
                     //j++;
                 } else if (!flag && Objects.equals(curLayout, "|")) {
                     flag = true;
-                    //j++;
-                } else if ((flag && curLayout.equals("|")) || j == row - 1) {
                     //j++;
                 }
                 j++;

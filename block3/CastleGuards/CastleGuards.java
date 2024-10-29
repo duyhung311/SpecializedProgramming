@@ -1,4 +1,4 @@
-//package block3.CastleGuards;
+package block3.CastleGuards;
 
 import java.util.Objects;
 

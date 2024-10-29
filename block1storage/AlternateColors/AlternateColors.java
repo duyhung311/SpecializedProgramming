@@ -100,7 +100,7 @@ public class AlternateColors {
         Long[][] inputs = {{1L,1L,1L,3L}, {3L,4L,5L,4L}, {7L,7L,1L,7L}, {1000000000000L,1L,1L,1000000000002L},
                 {653L, 32L, 1230L,556L}, {39L,4L,29L,7L}, {35L,41L,37L,106L}, {29L, 48L, 24L, 94L},
                 {32L,29L,25L, 30L},
-                //stress test cases
+                //stress test.txt cases
                 {17964018705L, 65273511246L, 31105494141L, 50314587302L}};
         Map<List<Long>, String> testCases = new LinkedHashMap<>();
 //        testCases.put(Arrays.asList(inputs[0]), BLUE);
@@ -112,7 +112,7 @@ public class AlternateColors {
 //        testCases.put(Arrays.asList(inputs[6]), GREEN);
 //        testCases.put(Arrays.asList(inputs[7]), GREEN);
 //        testCases.put(Arrays.asList(inputs[8]), BLUE);
-        //stress test case
+        //stress test.txt case
         testCases.put(Arrays.asList(inputs[9]), GREEN);
 
         for (Map.Entry<List<Long>, String> testCase : testCases.entrySet()) {
