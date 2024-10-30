@@ -1,0 +1,37 @@
+,
+************************
+* Individual practice *
+************************
+
+Problem1
+BigBurger
+Math (max)
+
+Problem2
+BlackAndWhiteSolitaire
+Simple while loops and if statements
+
+Problem3
+ErdosNumber
+Map (put, get, getOrDefault, keySet, entrySet)
+Set (putIfAbsent)
+Queue (add, isEmpty, poll)
+
+Problem4
+PrefixFreeSets
+
+Brute force with simple loops and if statements
+
+Problem5
+RunLengthEncoding
+StringBuilder (append, toString, length)
+Character (isDigit)
+
+-- Reflection --
+Explain the rationale behind your choice of individual practice.
+I just chose the problems that my mind could came up with some naive idea in the beginning and build up the comnplete solutuion later
+Which area you focused on improving (eg. speed, fluency, algorithmic design,
+coding)?
+Speed and algorithmic design
+What are your goals for the next block of practice?
+Finish the block practice on time
